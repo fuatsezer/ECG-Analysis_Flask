@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MobilMed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" >
+          <img src="/static/preloadedLogo.png" width="150" height="50" class="d-inline-block align-top" alt="">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-item nav-link" style="color: red;" href="/changehospital">Change Your Hospital</a>
+                <a class="nav-item nav-link" style="color: red;" href="/logout">Logout</a>
+            </li>      
+        </a>
+    </nav>
+    <div class="position-absolute top-50 start-50 translate-middle" >
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Patient Name</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for patient_name in current_user.patients %}
+                    <tr>
+                        <td>{{ patient_name }}</td>
+                        <td></td>
+                        <td><a class="btn btn-outline-primary" href="/ecg/{{ patient_name }}" role="button">Show ECG Reports</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>

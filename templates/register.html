@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="position-absolute top-50 start-50 translate-middle" >
+    <img src="/static/preloadedLogo.png" class="img-fluid" >
+    <form method="post" >
+    {{form.hidden_tag()}}
+    <label for="exampleFormControlInput1" class="form-label">Title and Full Name:</label>
+    {{form.title_name(class_="form-control")}} <br>
+    <label for="exampleFormControlInput1" class="form-label">Your Hospital Name:</label><br> 
+    {{form.hospital_name(class_="form-control")}} <br>
+    <label for="exampleFormControlInput1" class="form-label">Business Email:</label><br> 
+    {{form.email(class_="form-control")}} <br>
+    {% if form.email.errors %}
+        <ul class="alert alert-danger">{% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+    {% elif form.check_email(form.email) %}
+        <div class="alert alert-danger">
+             This email already using
+        </div>
+    {% endif %}
+    <label for="exampleFormControlInput1" class="form-label">Password:</label><br>
+    {{form.password(class_="form-control")}} <br>
+    {% if form.password.errors %}
+        <ul class="alert alert-danger">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+    
+    {% endif %}
+    <label for="exampleFormControlInput1" class="form-label">Confirm Password:</label><br> 
+    {{form.confirm(class_="form-control")}} <br>
+    <textarea class="form-control"  id="floatingTextarea" disabled>
+        This is contract 
+        ssssssssssssssssssssssssssssssssssssssssssdsdsdsdsdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+    </textarea>
+    <label for="exampleFormControlInput1" class="form-label">I accept contract</label> 
+    {{form.accept_tos(class_="form-check-label")}} <br>
+    <button class="btn btn-success"  type="submit">Register</button>
+    
+    <a class="btn btn-warning" style="margin-left:350px;" href="/" role="button">Login</a>
+    </form>
+</div>
+{% endblock %}

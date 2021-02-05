@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="position-absolute top-50 start-50 translate-middle" >
+        <img src="/static/preloadedLogo.png" class="img-fluid" >
+        <form method="post">
+            {{form.hidden_tag()}}
+            <label for="exampleFormControlInput1" class="form-label">Your New Hospital Name:</label><br>
+            {{form.hospital(class_="form-control")}} <br>
+            <button class="btn btn-success"  type="submit">Change</button>
+            <a class="btn btn-danger" style="margin-left:350px;" href="/home" role="button">Cancel</a>
+        </form>
+    </div>
+  
+{% endblock %}
